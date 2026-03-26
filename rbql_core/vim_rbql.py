@@ -1,8 +1,5 @@
 import os
 import sys
-import codecs
-import traceback
-import subprocess
 import tempfile
 import time
 
@@ -54,7 +51,7 @@ def get_random_suffix():
 
 
 def execute_python(src_table_path, rb_script_path, encoding, input_delim, input_policy, input_comment_prefix, out_delim, out_policy, dst_table_path, with_headers):
-    query = codecs.open(rb_script_path, encoding=encoding).read()
+    query = open(rb_script_path, encoding=encoding).read()
     warnings = []
     try:
         rbql.query_csv(query, src_table_path, input_delim, input_policy, dst_table_path, out_delim, out_policy, encoding, warnings, with_headers, comment_prefix=input_comment_prefix)
